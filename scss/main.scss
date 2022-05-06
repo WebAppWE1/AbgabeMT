@@ -1,0 +1,77 @@
+@use "reset";
+
+//index
+#inhalt {
+  #IFrame1 {
+    background-color: #f4a6ae;
+  }
+}
+
+// home
+#Kontakt {
+  border-bottom: 0.0625rem solid #000;
+
+  padding: 1rem;
+
+  .underline {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .strong {
+    font-weight: bolder;
+  }
+}
+
+// links
+#links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 10rem;
+
+  ul {
+    li:nth-child(n) {
+      border-bottom: 0.0625rem solid #000;
+      padding: 0.5rem 1rem;
+      text-align: center;
+
+      a:hover {
+        color: #5788fa;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+//übung1
+.content {
+  margin: 1rem 0.5rem;
+
+  .header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .tasks {
+    margin-left: 0.5rem;
+
+    .part {
+      margin: 3rem 0 3rem 0.5rem;
+
+      .taskName {
+        font-weight: bold;
+        text-decoration: underline;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
