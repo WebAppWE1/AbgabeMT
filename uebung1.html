@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medientechnologien</title>
+
+    <link rel="stylesheet" type="text/css" href="sass/main.css">
+</head>
+<body>
+    <iframe src="home.html" width="800" height="150" name="IFrame3" id="IFrame3">
+        <p>
+            Ihr Browser kann leider keine eingebetteten Frames anzeigen: Sie k&ouml;nnen die eingebettete Seite
+            &uuml;ber den folgenden.
+        </p>
+    </iframe>
+
+    <div class="content">
+        <h2 class="header">Übung 1</h2>
+
+        <div class="tasks">
+            <div class="part">
+                <h3 class="taskName">Aufgabe 1 - a)</h3>
+                <audio controls>
+                    <source src="./sources/audio/sprache_8khz_new.wav" type="audio/wav">
+                </audio>
+                <audio controls>
+                    <source src="./sources/audio/musik_44.1khz_new.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 1 - b)</h3>
+                <p>Aufgrund des Abtasttheorems von Shannon. Es gilt: fa > 2 * fmax</p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 1 - c)</h3>
+                <img src="sources/img/Header_musik.PNG" type="img/png" />
+                <img src="sources/img/Header_sprache.PNG" type="img/png" />
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 1 - d)</h3>
+                <p>Die Bitrate ergibt sich aus Abtastfrequent * Auflösung * Kanal</p>
+                <p>Bitrate musik: 1.411.200bit/s</p>
+                <p>Bitrate sprache: 352.800 bit/s</p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 2 - a & b)</h3>
+                <p>Für sine_lo01:</p>
+                <img src="sources/img/Sinuskurve_sine_lo01.PNG" type="img/png" />
+                <img src="sources/img/GRAM_sinelo01.PNG" type="img/png" />
+                <p>Für sine_hi04:</p>
+                <img src="sources/img/Sinuskurve_sine_hi04.PNG" type="img/png" />
+                <img src="sources/img/GRAM_sinehi04.PNG" type="img/png" />
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 2 - c)</h3>
+                <p>
+                    Die Abtastfrequenz F muss mehr als das Doppelte der höchsten im Signal enthaltenen Frequenz betragen.
+                    Dies führt sonst zu groben Verzerrungen, die die Signalanteile beeinflussen.
+                    <span class="strong">Es gilt f(a) > 2 · f(max)</span>.
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 2 - d)</h3>
+                <p>
+                    Bei herkömmlichen Soundkarten wird das Signal durch einen Tiefpassfilter bearbeitet,
+                    sodass in der Regel alle Frequenzen > f(max)/2 abgetrennt werden.
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 2 - e)</h3>
+                <p>Für sine_lo01:</p>
+                <audio controls>
+                    <source src="sources/audio/sine_lo01_DS.wav" type="audio/wav">
+                </audio>
+                <p>Für sine_hi04:</p>
+                <audio controls>
+                    <source src="sources/audio/sine_hi04_DS.wav" type="audio/wav">
+                </audio>
+                <p>Code:</p>
+                <p class="code">
+                    for (int i = 0; i < samples / 2; i++) {<br>
+                    readWavFile.sound[i] = readWavFile.sound[i * 2];<br>
+                    }<br>
+                    sampleRate /= 2;<br>
+                    samples /= 2;
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 2 - f)</h3>
+                <p>Für sine_lo01:</p>
+                <img src="sources/img/gram_sine_low_DS.png" type="img/png" />
+                <p>Für sine_hi04:</p>
+                <img src="sources/img/gram_sine_hi_DS.png" type="img/png" />
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 2 - g)</h3>
+                <p>
+                    Die Stimme der Sprachdatei hört sich viel tiefer und leicht verzerrt an. Dies kommt zustande weil
+                    die hohen Frequenzen herunter gesampelt wurden und nun nur noch die tiefe Audiospur vorhanden ist.
+                </p>
+                <audio controls>
+                    <source src="sources/audio/sprache_17_mono_8000_kurz_DS.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 3 - a)</h3>
+                <p>
+                    <span class="strong">8 Bit-Auflösung:</span> -128 bis +127<br>
+                    <span class="strong">16 Bit-Auflösung:</span> -32768 bis 32767
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 3 - b)</h3>
+                <p>Code:</p>
+                <p class="code">
+                    for(i = 0; i < samples; i++){<br>
+                    readWavFile.sound[i] /= Math.pow(2, n);<br>
+                    readWavFile.sound[i] *= Math.pow(2, n);
+                    }
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 3 - c)</h3>
+                <p>
+                    Für das entstehende Quantisierungsgeräusch ist ein starkes Rauschen signifikant. Mit zunehmender
+                    Bitreduzierung überlagert dieses das eigentliche Signal. Dadurch gehen wichtige Informationen
+                    verloren. Bei der Sprachdatei ist die Qualität bei einer Reduzierung um 128 Bit noch gut. Ab 256 Bit
+                    jedoch hört man bereits ein Rauschen im Hintergrund. Ab 1024 Bit ist das Rauschen schon als störend
+                    zu empfinden und es beginnt das Sprachsignal zu überlagern. In der Musikdatei kann man ein Rauschen
+                    ab 512 Bit Reduzierung bemerken. Bei einer Bitreduzierung von 2048 Bit wird es unangenehm und
+                    ab 8192 Bit kann man spätestens nicht mehr von Musik sprechen.
+                </p>
+                <audio controls>
+                    <source src="sources/audio/sprache_17_mono_8000_kurz_Bit.wav" type="audio/wav">
+                </audio>
+                <audio controls>
+                    <source src="sources/audio/musik_17_stereo_44100_kurzBIT.wav" type="audio/wav">
+                </audio>
+                <p><span class="code">(Reduzierung bei der Wav Files um 10 bit)</span></p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 3 - d)</h3>
+                <p>
+                    Das Quantisierungsgeräusch tritt nur auf, wenn das Signal Informationen (Sprache/Musik) enthält.
+                    Je höher die Reduzierung, desto stärker ist das Quantisierungsgeräusch.
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 3 - e)</h3>
+                <p>Code:</p>
+                <p class="code">
+                    for(i = 0; i < samples; i++) {<br>
+                    new_sound [i] = sound[i];<br>
+                    sound[i] /= pow(2, n);<br>
+                    sound[i]= pow(2, n);<br>
+                    sound[i] -= new_sound[i];<br>
+                    sound[i] *= pow(2, 16-n-1);<br>
+                    }
+                </p>
+            </div>
+
+            <div class="part">
+                <h3 class="taskName">Aufgabe 3 - f)</h3>
+                <p>
+                    Bei einer Reduktion um 1 bit ist das Differenzsignal ein intensives Rauschen.
+                    Bei zunehmender Bitreduktion wird das Differenzsignal dem Originalsignal ähnlicher.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
