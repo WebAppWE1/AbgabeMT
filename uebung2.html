@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medientechnologien</title>
+
+    <link rel="stylesheet" type="text/css" href="sass/main.css">
+</head>
+<body>
+<iframe src="home.html" width="800" height="150" name="IFrame3" id="IFrame3">
+    <p>
+        Ihr Browser kann leider keine eingebetteten Frames anzeigen: Sie k&ouml;nnen die eingebettete Seite
+        &uuml;ber den folgenden.
+    </p>
+</iframe>
+
+<div class="content">
+    <h2 class="header">Übung 1</h2>
+
+    <div class="tasks">
+        <div class="part">
+            <h3 class="taskName">Aufgabe 1</h3>
+            <p>Die zwei zu bearbeitenden Bilder: </p>
+            <div class="image-container">
+                <img class="horizontal" src="./sources/img/uebung2/manmade_ÜG17.bmp" type="img/bmp" />
+                <img class="vertical" src="sources/img/uebung2/nature_ÜG17.bmp" type="img/bmp" />
+            </div>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 1 - b)</h3>
+            <p>
+                Die Dateigröße von 1.555.254 Bytes kommt zu Stande, da die Bilder mit einer Farbtiefe von 24 bits pro
+                Pixel und einer Größe von 540x960 ziemlich viele bits beinhaltet und somit eine größere Datei ist, als
+                ein Standard jgp.
+            </p>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 2 - a)</h3>
+            <div class="image-container">
+                <img class="vertical" src="sources/img/uebung2/RGB-Werte_horizontal_Grating_H10.PNG" />
+                <img class="vertical" src="sources/img/uebung2/RGB-Werte_vertikal_grating_H10.PNG" />
+            </div>
+            <div class="image-container">
+                <img class="vertical" src="sources/img/uebung2/RGB-Werte_horizontal_Grating_V4.PNG" />
+                <img class="vertical" src="sources/img/uebung2/RGB-Werte_vertikal_grating_v4.PNG" />
+            </div>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 2 - b)</h3>
+            <p>Bei der Abtastung eines analogen Signals muss das Abtasttheorem eingehalten werden. Dieses lautet:<br>
+                fa > 2 x fmax<br>
+                fa : Häufigkeit (Frequenz) der Abtastung<br>
+                fmax : höchste Frequenz im Signal<br><br>
+                Beim Audiosignal kann man sich dies leicht so vorstellen, dass man pro Periode der schnellsten
+                Schwingung (d.h. des höchsten Tons) mehr als 2 Beobachtungen benötigt. Genau genommen liegt der
+                Grenzfall bei 2, wie er oben in der folgenden Abbildung zu sehen ist:
+            </p>
+            <div class="image-container">
+                <img class="horizontal" src="sources/img/uebung2/Text-Bild.PNG" />
+            </div>
+            <p>
+                Aus zwei Abtastwerten pro Periode kann das Originalsignal wieder rekonstruiert
+                werden wie die gestrichelte Kurve andeutet. Die resultierende Frequenz fres entspricht dann
+                wieder der ursprünglichen Signalfrequenz fs. Da aber bei nur zwei Werten pro Periode auch die
+                Nulldurchgänge getroffen werden könnten und damit kein Signal vorhanden wäre merken wir  uns das
+                Abtasttheorem in der Form fa > 2 x fmax. Wird das Theorem nicht eingehalten (im vorigen Bild der
+                unter Fall), kann aus den Abtastwerten die ursprüngliche Kurve nicht mehr hergestellt werden.
+                Es entsteht eine höhere Periodendauer, bzw. eine niedrigere Frequenz
+            </p>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 2 - c)</h3>
+            <p>Graustufenbilder der beiden Bilddateien:</p>
+            <div class="image-container">
+                <img class="vertical" src="sources/img/uebung2/grau_test.bmp" />
+                <img class="horizontal" src="sources/img/uebung2/grau_test_2.bmp" />
+            </div>
+            <p class="code">
+                <pre>
+                    // erzeuge graustufenbild
+                        for(int y = 0; y < bmp.image.getHeight(); y++) {
+                            for(int x = 0;x < bmp.image.getWidth(); x++) {
+
+                                // ** ToDo **
+                                PixelColor px = bmp.image.getRgbPixel(x, y);
+                                int y_value = (int) (0.3 * px.r + 0.6 * px.g + 0.1 * px.b);
+                                PixelColor newPx = new PixelColor(y_value, y_value, y_value);
+                                bmp.image.setRgbPixel(x, y, newPx);
+                            }
+                        }
+                </pre>
+            </p>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 2 - d)</h3>
+            <p>Als Alias-Effekte werden im Bereich der Signalanalyse Fehler bezeichnet, die auftreten, wenn
+                im abzutastenden Signal Frequenzanteile vorkommen, die höher sind als die halbe Abtastfrequenz.
+                <br>
+                <br>
+                Aliasing kann einerseits durch die Nichtbeachtung des Abtasttheorems (zu geringe Abtastfrequenz)
+                beim digitalen Abtasten von Signalen auftreten und andererseits, wenn das abzutastende Signal von
+                einem Störsignal überlagert ist, das seinerseits Frequenzen enthält, die höher als die halbe
+                Abtastfrequenz sind. In der Bildverarbeitung und Computergrafik treten Alias-Effekte bei der Abtastung
+                von Bildern auf und führen zu Mustern, die im Originalbild nicht enthalten sind.
+                <br>
+                <br>
+                In der Audiotechnik äußern sich Alias-Effekte als Störgeräusche. Um Aliasing zu verhindern, können
+                Tiefpassfilter eingesetzt werden, die unerwünschte Frequenzanteile herausfiltern.
+            </p>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 2 - e)</h3>
+            <p>
+                Die beiden Bilddateien Grating_V4.bmp und Grating_H10-bmp haben entweder ein horizontales (V4) oder
+                vertikales (H10) Muster und kriegen daher beim Downsampling in gleicher Richtung wie das Muster keine
+                sehbare Veränderung.
+            </p>
+            <div class="image-container">
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/grating_H10.bmp" />
+                    <figcaption>
+                        <p>Grating_H10.bmp</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/grating_V4.bmp" />
+                    <figcaption>
+                        <p>Grating_V4.bmp</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <p class="code">
+                <pre>
+                    // downsampling (horizontal)
+                    int downsampling_range = 5;
+                    for(int y = 0; y < bmp.image.getHeight(); y++) {
+                        for(int x = 0; x < bmp.image.getWidth(); x += downsampling_range) {
+
+                            // ** ToDo **
+                            PixelColor px = bmp.image.getRgbPixel(x, y);
+                            for (int i = 1; i < downsampling_range; i++) {
+                                if (x + i < bmp.image.getWidth()) {
+                                    bmp.image.setRgbPixel(x + i, y, px);
+                                }
+                            }
+                        }
+                    }
+                </pre>
+            </p>
+            <p>Ergebnisse des Downsampling bei 1,2, 3 und 4 Spalten:</p>
+            <div class="image-container">
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_H10.bmp" />
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_H10_2steps.bmp" />
+            </div>
+            <div class="image-container">
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_H10_3steps.bmp" />
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_H10_4steps.bmp" />
+            </div>
+            <p class="code">
+                <pre>
+                    // downsampling (vertical)
+                    for(int x = 0; x < bmp.image.getWidth(); x++) {
+                        for(int y = 0; y < bmp.image.getHeight(); y += downsampling_range) {
+
+                            // ** ToDo **
+                            PixelColor px = bmp.image.getRgbPixel(x, y);
+                            for (int i = 1; i < downsampling_range; i++) {
+                                if (y + i < bmp.image.getHeight()) {
+                                    bmp.image.setRgbPixel(x, y + i, px);
+                                }
+                            }
+                        }
+                    }
+                </pre>
+            </p>
+            <p>Ergebnisse des Downsampling bei 1, 2, 3 und 4 Spalten:</p>
+            <div class="image-container">
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_V4_vertical.bmp" />
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_V4_vertical_2steps.bmp" />
+            </div>
+            <div class="image-container">
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_V4_vertical_3steps.bmp" />
+                <img class="horizontal" src="sources/img/uebung2/downsampling_grating_V4_vertical_4steps.bmp" />
+            </div>
+            <p style="margin: 1.5rem">
+                Bei dem Downsampling von beiden Bildern kann man bereits bei einem Downsampling von einer Spalte eine
+                sehbare Veränderung erkennen. Das gesamte Bild wirkt etwas verschwommen und es treten Muster auf. Wird
+                die Spalteanzahl erhöht, "verbessert" sich die Schärfe, da die Balken in den Bildern dicker werden.
+            </p>
+            <p>Downsampling auf den Datein nature.bmp und manmade.bmp von Herr Mixxdorf</p>
+            <div class="image-container">
+                <img class="horizontal" src="sources/img/uebung2/downsampling_manmade_3steps.bmp" />
+                <img class="vertical" src="sources/img/uebung2/downsampling_nature_3steps.bmp" />
+            </div>
+            <p>
+                Eine deutlich auffallende Verschlechterung der Bildqualität fällt bei einem Downsampling von 3 Spalten
+                auf. Das Bild wird immer unschärfer und einzelne Pixelblöcke sind deutlich zu sehen. Beim Bild mit der
+                Pflanze ist der Verlust der Bildqualität deutlich besser zu sehen, da dieses Bild detailreicher ist als
+                das andere.
+            </p>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 3 - a)</h3>
+            <p class="code">
+            <pre>
+                    // bitreduzierung
+                    int reduced_bits = 6;
+                    for(int y = 0; y < bmp.image.getHeight(); y++) {
+                        for (int x = 0; x < bmp.image.getWidth(); x++) {
+
+                            // ** ToDo **
+                            PixelColor px = bmp.image.getRgbPixel(x, y);
+                            px.r /= Math.pow(2, reduced_bits);
+                            px.r = Math.pow(2, reduced_bits);
+                            px.g /= Math.pow(2, reduced_bits);
+                            px.g= Math.pow(2, reduced_bits);
+                            px.b /= Math.pow(2, reduced_bits);
+                            px.b *= Math.pow(2, reduced_bits);
+                            bmp.image.setRgbPixel(x, y, px);
+                        }
+                    }
+                </pre>
+            </p>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 3 - b)</h3>
+            <p>Ergebnisbilder von Flächen-Bild (Holz):</p>
+            <div class="image-container">
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_manmade_1bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 1 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_manmade_2bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 2 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_manmade_4bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 4 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_manmade_5bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 5 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_manmade_6bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 6 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_manmade_7bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 7 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <p>Ergebnisbilder von Detail-Bild (Blume):</p>
+            <div class="image-container">
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_nature_1bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 1 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_nature_2bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 2 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_nature_3bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 3 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_nature_4bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 4 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_nature_5bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 5 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_nature_6bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 6 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreduzierung_nature_7bit.bmp" />
+                    <figcaption>
+                        <p>Reduzierung um 7 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+        <div class="part">
+            <h3 class="taskName">Aufgabe 3 - c)</h3>
+            <p class="code">
+                <pre>
+                    reduced_bits = 6;
+                    int bitsPerColor = 8;
+                    for(int y = 0; y < bmp.image.getHeight(); y++) {
+                        for (int x = 0; x < bmp.image.getWidth(); x++) {
+
+                            // ** ToDo **
+                            PixelColor px = bmp.image.getRgbPixel(x, y);
+                            int newR = px.r;
+                            px.r /= Math.pow(2, reduced_bits);
+                            px.r = Math.pow(2, reduced_bits);
+                            px.r -= newR;
+                            px.r= Math.pow(2, bitsPerColor - reduced_bits - 1);
+                            px.r += 128;
+                            int newG = px.g;
+                            px.g /= Math.pow(2, reduced_bits);
+                            px.g = Math.pow(2, reduced_bits);
+                            px.g -= newG;
+                            px.g= Math.pow(2, bitsPerColor - reduced_bits - 1);
+                            px.g += 128;
+                            int newB = px.b;
+                            px.b /= Math.pow(2, reduced_bits);
+                            px.b = Math.pow(2, reduced_bits);
+                            px.b -= newB;
+                            px.b= Math.pow(2, bitsPerColor - reduced_bits - 1);
+                            px.b += 128;
+                            bmp.image.setRgbPixel(x, y, px);
+                        }
+                    }
+                </pre>
+            </p>
+            <p>Differenzbilder der Flächen-Bilder (Holz):</p>
+            <div class="image-container">
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_Diff_manmade_1bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 1 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_Diff_manmade_4bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 4 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="horizontal" src="sources/img/uebung2/bitreducing_Diff_manmade_6bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 6 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <p>Differenzbilder der Detail-Bilder (Blume):</p>
+            <div class="image-container">
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_Diff_nature_1bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 1 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_Diff_nature_4bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 4 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="image-container">
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_Diff_nature_6bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 6 Bit</p>
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img class="vertical" src="sources/img/uebung2/bitreducing_Diff_nature_7bit.bmp" />
+                    <figcaption>
+                        <p>Differenz bei Reduzierung um 7 Bit</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
