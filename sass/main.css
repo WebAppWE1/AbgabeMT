@@ -95,9 +95,25 @@ iframe {
   text-decoration: underline;
   margin-bottom: 0.5rem;
 }
-.content .tasks .part img {
+.content .tasks .part .image-container {
+  display: flex;
+  justify-content: center;
+}
+.content .tasks .part .image-container .horizontal {
   width: 20rem;
   height: 15rem;
+}
+.content .tasks .part .image-container .vertical {
+  width: 15rem;
+  height: 20rem;
+}
+.content .tasks .part .image-container img {
+  margin: 0.5rem;
+  transition: transform 0.25s ease;
+}
+.content .tasks .part .image-container img:hover {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
 }
 .content .tasks .part .strong {
   font-weight: bolder;

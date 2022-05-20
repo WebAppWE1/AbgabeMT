@@ -73,9 +73,30 @@
         margin-bottom: 0.5rem;
       }
 
-      img {
-        width: 20rem;
-        height: 15rem;
+      .image-container {
+        display: flex;
+        justify-content: center;
+
+        .horizontal {
+          width: 20rem;
+          height: 15rem;
+        }
+
+        .vertical {
+          width: 15rem;
+          height: 20rem;
+        }
+
+        img {
+          margin: 0.5rem;
+
+          transition: transform 0.25s ease;
+
+          &:hover {
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+          }
+        }
       }
 
       .strong {
